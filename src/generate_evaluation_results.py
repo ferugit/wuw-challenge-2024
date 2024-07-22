@@ -168,7 +168,7 @@ def main(args):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description='Measure forward time of a scripted model')
+    parser = argparse.ArgumentParser(description='Generate evaluation results for a given model')
     parser.add_argument('--model_path', default='', required=True, help='model path')
     parser.add_argument('--output_dir', default='', required=True, help='output path')
     parser.add_argument('--test_tsv', default='', required=True, help='tsv file containing the extended test')
