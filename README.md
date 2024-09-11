@@ -19,9 +19,9 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Streaming Test Script Explanation
+## Results genaration
 
-The `run_streaming_test.sh` script is used to evaluate the system on an extended test set. It assumes that the model has been trained and the test set is available. The script generates evaluation results and saves them in the output directory. It also evaluates the system performance and prints the results.
+The `generate_system_results.sh` script is used to generate the system's reulsts on an extended test set. It assumes that the model has been trained and the test set is available. The script generates evaluation results and saves them in the output directory.
 
 Here's a breakdown of the script:
 
@@ -48,6 +48,31 @@ Here's a breakdown of the script:
 - **Model Path**
 - `model_path`: The path to the trained model. Set to "output/models/your_model.pth" by default.
 
-### Running the Test
+## Citations
 
-The script generates the results by executing the `src/generate_evaluation_results.py` Python script with the above configuration parameters.
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2101.12732,
+  doi = {10.48550/ARXIV.2101.12732},
+  url = {https://arxiv.org/abs/2101.12732},
+  author = {Bonet, David and Cámbara, Guillermo and López, Fernando and Gómez, Pablo and Segura, Carlos and Luque, Jordi},
+  title = {Speech Enhancement for Wake-Up-Word detection in Voice Assistants},
+  publisher = {arXiv},
+  year = {2021},
+}
+
+@article{cambara2022tase,
+  title={TASE: Task-Aware Speech Enhancement for Wake-Up Word Detection in Voice Assistants},
+  author={C{\'a}mbara, Guillermo and L{\'o}pez, Fernando and Bonet, David and G{\'o}mez, Pablo and Segura, Carlos and Farr{\'u}s, Mireia and Luque, Jordi},
+  journal={Applied Sciences},
+  volume={12},
+  number={4},
+  pages={1974},
+  year={2022},
+  publisher={MDPI}
+}
+
+```
+
+
+
+
