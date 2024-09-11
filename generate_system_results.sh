@@ -35,7 +35,6 @@ test_file="$dataset_path/extended_test/test-extended.tsv"
 model_path="baseline/lambda-resnet18.jit"
 
 generate_evaluation_results=true
-evaluate_system=true
 
 # Run the test
 if [ "$generate_evaluation_results" = true ] ; then
@@ -51,13 +50,5 @@ if [ "$generate_evaluation_results" = true ] ; then
         --n_positives $n_positives \
         --sysid $SYSID \
         --model_path $model_path
-fi
-
-if [ "$evaluate_system" = true ] ; then
-    echo -e "\nEvaluating the system...\n"
-    python src/evaluate_system.py \
-        --results_tsv $output_dir/$SYSID.tsv \
-        --ref_tsv $test_file \
-        --output_dir $output_dir
 fi
 
