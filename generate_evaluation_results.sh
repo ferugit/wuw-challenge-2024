@@ -35,7 +35,8 @@ ref_file="/home/fer/Projects/ok-aura-dataset/wuwdc2024/extended/wuwdc2024-eval_w
 # Model path
 model_path="baseline/lambda-resnet18.jit"
 
-generate_evaluation_results=true
+generate_evaluation_results=false
+evaluate_system=true
 
 # Run the test
 if [ "$generate_evaluation_results" = true ] ; then
@@ -51,5 +52,13 @@ if [ "$generate_evaluation_results" = true ] ; then
         --n_positives $n_positives \
         --sysid $SYSID \
         --model_path $model_path
+fi
+
+if [ "$evaluate_system" = true ] ; then
+    echo "\nEvaluating the system..."
+    python src/evaluate_system.py \
+        --results_tsv $output_dir/$SYSID.tsv \
+        --ref_tsv $ref_file \
+        --output_dir $output_dir
 fi
 
