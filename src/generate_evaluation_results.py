@@ -82,6 +82,7 @@ def calculate_results_outputs(probabilities, labels, window_size, hop, n_positiv
     if detection:
         end_idx = start_idx + n_positives - 1
         prob = sum(probabilities[start_idx:start_idx + n_positives]) / n_positives
+        #prob = sum(probabilities) / len(probabilities)
         start_time = (start_idx * hop)/sample_rate
         end_time = (end_idx * hop + window_size)/sample_rate
     else:
@@ -94,6 +95,7 @@ def calculate_results_outputs(probabilities, labels, window_size, hop, n_positiv
 def look_detection_pattern(labels, n_positives):
     """
     Look for a detection pattern in the labels.
+    **This may be modified by participants to match their detection logic.
     """
     sub_lst = [1]*n_positives
     len_sub_lst = len(sub_lst)
@@ -121,9 +123,15 @@ def main(args):
         results_list = []
 
         for _, row in tqdm(df.iterrows(), total=df.shape[0], ncols=60, desc="Streaming test"):
-            filename = row['Sample_Path']
-            audio_path = os.path.join(args.dataset_path, filename)
-            label = row['Label']
+            try :
+                filename = row['Sample_Path']
+            except:
+
+                filename = row['Sample_ID']
+            if ('extended_test/clips' in filename):
+                filename = filename.replace('extended_test/clips/', '')
+            
+            audio_path = os.path.join(clips_path, filename)
             
             predicted_probs = []
             predicted_labels = []
