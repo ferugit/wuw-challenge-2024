@@ -16,13 +16,16 @@ time_window=1.5 # seconds
 hop_size=0.256 # seconds
 
 # WuW detection criteria
-threshold=0.5 # Detection threshold
-n_positives=1 # Minimum number of windows to detect a WuW event
+threshold=0.8 # Detection threshold
+n_positives=2 # Minimum number of windows to detect a WuW event
 
 # Output directory
 output_dir="output/"
 SYSID="YOUR_SYSTEM_ID"
 SITE="YOUR_SITE_ID"
+
+# Make the output directory if it does not exist
+mkdir -p $output_dir
 
 # Test file path
 dataset_path="/home/fer/Projects/okey-aura-v1.1.0"
@@ -31,11 +34,12 @@ test_file="$dataset_path/extended_test/test-extended.tsv"
 # Model path
 model_path="baseline/lambda-resnet18.jit"
 
-generate_evaluation_results=false
+generate_evaluation_results=true
 evaluate_system=true
 
 # Run the test
 if [ "$generate_evaluation_results" = true ] ; then
+    echo -e "\nGenerating evaluation results...\n"
     python src/generate_evaluation_results.py \
         --sampling_rate $sampling_rate \
         --time_window $time_window \
@@ -50,6 +54,7 @@ if [ "$generate_evaluation_results" = true ] ; then
 fi
 
 if [ "$evaluate_system" = true ] ; then
+    echo -e "\nEvaluating the system...\n"
     python src/evaluate_system.py \
         --results_tsv $output_dir/$SYSID.tsv \
         --ref_tsv $test_file \
