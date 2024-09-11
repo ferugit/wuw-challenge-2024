@@ -11,9 +11,9 @@ def calculate_metrics(results_df, ref_df):
     Calculate the Detect Cost Function (DCF) for the system.
     """
     cost_model = {
-        'p_wuw' : 0.1,
+        'p_wuw' : 0.5,
         'c_miss' : 1,
-        'c_fa' : 10
+        'c_fa' : 1.5
     }
 
     # Calculate misses
