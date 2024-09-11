@@ -8,18 +8,18 @@ This repository contains the baseline system for the challenge and a simple scri
 
 ## Environment setup
 
-First of all, install all dependences. Open a command line and run the next lines:
+First of all, install all dependencies. Open a command line and run the next lines:
 
 ``` bash
 # create a virtual environment
 python3 -m venv .venv
-# activate the virtual environment
+# Activate the virtual environment
 source .venv/bin/activate
-# install dependencies
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-## Results genaration
+## Results generation
 
 The `generate_system_results.sh` script is used to generate the system's reulsts on an extended test set. It assumes that the model has been trained and the test set is available. The script generates evaluation results and saves them in the output directory.
 
